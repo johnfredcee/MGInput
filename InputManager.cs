@@ -16,15 +16,15 @@ namespace MGInput
         private HashSet<string> _actionsPressedThisUpdate;
         private HashSet<string> _actionsDownThisUpdate;
         // Tracks symbols
-		private HashSet<InputSymbol> _symbolsPressedThisUpdate;
+        private HashSet<InputSymbol> _symbolsPressedThisUpdate;
         // Encapsuates system input
         private InputState _currentInputState;
         // Filter for actions 
         private Stack<string> _currentInputContext;
         public InputState InputState => _currentInputState;
         public HashSet<string> ActionsPressedThisUpdate => _actionsPressedThisUpdate;
-		public HashSet<string> ActionsDownThisUpdate => _actionsDownThisUpdate;
-		public HashSet<InputSymbol> SymbolsPressedThisUpdate => _symbolsPressedThisUpdate;
+        public HashSet<string> ActionsDownThisUpdate => _actionsDownThisUpdate;
+        public HashSet<InputSymbol> SymbolsPressedThisUpdate => _symbolsPressedThisUpdate;
         public Dictionary<Keys, InputSymbol> SymbolMappings
         {
             get { return _symbolDefinitions; }
@@ -45,14 +45,14 @@ namespace MGInput
         public InputManager(Game game) : base(game)
         {
             _actionsPressedThisUpdate = new HashSet<string>();
-			_actionsDownThisUpdate = new HashSet<string>();
-			_symbolsPressedThisUpdate = new HashSet<InputSymbol>();
+            _actionsDownThisUpdate = new HashSet<string>();
+            _symbolsPressedThisUpdate = new HashSet<InputSymbol>();
             _currentInputState = new InputState();
             _currentInputState.PlayerIndex = PlayerIndex.One;
             _actions = new Dictionary<string, InputAction>();
             _axes = new Dictionary<string, InputAxis>();
             _currentInputContext = new Stack<string>();
-			BindConsoleInput();
+            BindConsoleInput();
         }
         /// <summary>
         /// Binds a keyboard key to an action.
@@ -97,12 +97,12 @@ namespace MGInput
         {
             // Clear just pressed/released lists
             _actionsPressedThisUpdate.Clear();
-			_symbolsPressedThisUpdate.Clear();
-			_actionsDownThisUpdate.Clear();
-			
+            _symbolsPressedThisUpdate.Clear();
+            _actionsDownThisUpdate.Clear();
+
             _currentInputState.Update(gameTime);
 
-			
+
             var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             foreach (var act in _actions)
@@ -222,19 +222,19 @@ namespace MGInput
             //Bind( Keys.NumLock, "ConsoleAction.NumLock" );
             Bind("ConsoleAction.SelectionModifier", Keys.LeftShift, Keys.None);
             Bind("ConsoleAction.SelectionModifier", Keys.RightShift, Keys.None);
-			Bind("ViewAction.ViewMap", Keys.F10);
-			Bind("ViewAction.ViewHeatMap0", Keys.F5);
-			Bind("ViewAction.ViewHeatMap1", Keys.F6);
-			Bind("ViewAction.ViewHeatMap3", Keys.F7);
-			Bind("ViewAction.ViewHeatMap4", Keys.F8);
-			Bind("ViewAction.ViewHeatMap5", Keys.F9);
-			Bind("ViewAction.ScrollUp", Keys.W);
-			Bind("ViewAction.ScrollDown", Keys.S);
-			Bind("ViewAction.ScrollLeft", Keys.A);
-    		Bind("ViewAction.ScrollRight", Keys.D);
+            Bind("ViewAction.ViewMap", Keys.F10);
+            Bind("ViewAction.ViewHeatMap0", Keys.F5);
+            Bind("ViewAction.ViewHeatMap1", Keys.F6);
+            Bind("ViewAction.ViewHeatMap3", Keys.F7);
+            Bind("ViewAction.ViewHeatMap4", Keys.F8);
+            Bind("ViewAction.ViewHeatMap5", Keys.F9);
+            Bind("ViewAction.ScrollUp", Keys.W);
+            Bind("ViewAction.ScrollDown", Keys.S);
+            Bind("ViewAction.ScrollLeft", Keys.A);
+            Bind("ViewAction.ScrollRight", Keys.D);
         }
 
-	    private Dictionary<Keys, InputSymbol> _symbolDefinitions = new Dictionary<Keys, InputSymbol>
+        private Dictionary<Keys, InputSymbol> _symbolDefinitions = new Dictionary<Keys, InputSymbol>
         {
             // Digits.
             { Keys.D1, new InputSymbol("1", "!") },
@@ -309,6 +309,6 @@ namespace MGInput
             //{ Keys.Tab, new SymbolPair("\t", "\t") } // Tab char is not supported in many fonts.
             //{ Keys.Tab, new SymbolPair("    ", "    ") } // Use 4 spaces instead.
         };
- 
+
     }
 }
